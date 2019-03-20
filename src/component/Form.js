@@ -11,6 +11,7 @@ class Form extends React.Component {
       nameValid: 0,
       emailErrorClass: "default",
       emailValid: 0,
+      formSubmitted: 0,
 
     };
 
@@ -28,7 +29,7 @@ class Form extends React.Component {
   submitform = (e) => {
     e.preventDefault();
     console.log(e.target);
-    this.setState({ name: "", email: "" });
+    this.setState({ name: "", email: "", formSubmitted: 1 });
   }
 
   validateName = () => {
@@ -63,21 +64,26 @@ class Form extends React.Component {
 
 
   render() {
-    return (
-      <div>
-        <form onSubmit={this.submitform}>
-          <div className="validFormin">
-            <input className="forminput" name="name" placeholder="Name" onChange={this.handleChange} onBlur={this.validateName} value={this.state.name} />
-            <label className={this.state.nameErrorClass}>Name validation errors here</label>
-          </div>
-          <div className="validFormin">
-            <input className="forminput" name="email" placeholder="Email" onChange={this.handleChange} onBlur={this.validateEmail} value={this.state.email} />
-            <label className={this.state.emailErrorClass}>Email validation errors here</label>
-          </div>
-          <button className="validFormin" disabled={this.state.emailValid && this.state.nameValid ? false : true}>Submit</button>
-        </form>
 
-      </div >
+    return (
+      !this.state.formSubmitted ? (
+        <div>
+          <form onSubmit={this.submitform}>
+            <div className="validFormin">
+              <input className="forminput" name="name" placeholder="Name" onChange={this.handleChange} onBlur={this.validateName} value={this.state.name} />
+              <label className={this.state.nameErrorClass}>Name validation errors here</label>
+            </div>
+            <div className="validFormin">
+              <input className="forminput" name="email" placeholder="Email" onChange={this.handleChange} onBlur={this.validateEmail} value={this.state.email} />
+              <label className={this.state.emailErrorClass}>Email validation errors here</label>
+            </div>
+            <button className="validFormin" disabled={this.state.emailValid && this.state.nameValid ? false : true}>Submit</button>
+          </form>
+
+        </div >
+      ) :
+        <div><h1>Thanks</h1></div>
+
 
     );
   }
