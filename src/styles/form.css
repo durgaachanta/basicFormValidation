@@ -1,0 +1,25 @@
+.validFormin {
+  display: block;
+  /* padding: 10px; */
+  margin: 20px;
+}
+.nameinvalid {
+  color: red;
+  padding: 10px;
+  /* display: none; */
+}
+
+.emailinvalid {
+  color: red;
+  padding: 10px;
+  /* display: none; */
+}
+.default{
+  display: none;
+}
+
+.forminput {
+  height: 40px;
+  width: 200px;
+  border: 5px solid grey;
+}
