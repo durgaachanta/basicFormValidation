@@ -68,6 +68,7 @@ class Form extends React.Component {
     return (
       !this.state.formSubmitted ? (
         <div>
+          <h1>Form Validation</h1>
           <form onSubmit={this.submitform}>
             <div className="validFormin">
               <input className="forminput" name="name" placeholder="Name" onChange={this.handleChange} onBlur={this.validateName} value={this.state.name} />
